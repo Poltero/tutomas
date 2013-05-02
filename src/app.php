@@ -20,4 +20,6 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
     return $twig;
 }));
 
+$app['debug'] = true;
+
 return $app;
