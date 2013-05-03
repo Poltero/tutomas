@@ -9,8 +9,28 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html', array());
 })
-->bind('homepage')
-;
+->bind('homepage');
+
+$tutoriales = array(
+		array(
+				'id' => 1,
+				'titulo' => 'primera entrada',
+				'descripcion' => 'va sobre algo',
+				'time' => 0,
+				'autor' => 'pablo'
+				),
+		array(
+				'id' => 2,
+				'titulo' => 'segunda entrada',
+				'descripcion' => 'va sobre algo',
+				'time' => 1,
+				'autor' => 'david'
+				));
+
+$app->get('/tutoriales', function() use ($app, $tutoriales) {
+	return $app->json($tutoriales);
+
+})->bind('tutoriales');
 
 
 //Gestion de errores
